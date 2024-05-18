@@ -15,7 +15,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Manage Exam</li>
+              <li class="breadcrumb-item active">Student List</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -28,10 +28,10 @@
               <!-- Default box -->
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Title</h3>
+                  <h3 class="card-title">Student List</h3>
   
                   <div class="card-tools">
-                        <a class="btn btn-info btn-sm" href="javascript:;" data-toggle="modal" data-target="#myModal">Add new</a>
+                        <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#myModal">Add new</a>
                   </div>
                 </div>
                 <div class="card-body">
@@ -51,8 +51,9 @@
                                    <td>{{ $p['name']}}</td>
                                    <td>{{ $p['email']}}</td>
                                    <td>
-                                       
-                                       <a href="{{ url('admin/delete_registered_students/'.$p['id'])}}" class="btn btn-danger btn-sm">Delete</a>
+                                      <a href="{{ route('admin.student.show', $p['id'])}}" class="btn btn-info btn-sm">View</a>
+                                      <a href="{{ route('admin.student.edit', $p['id']) }}" class="btn btn-primary btn-sm">Edit</a>
+                                      <a href="{{ route('admin.student.delete', $p['id'])}}" class="btn btn-danger btn-sm" onclick="return confirm('Confirm to delete?')">Delete</a>
                                    </td>
                                </tr>
                            @endforeach
@@ -73,7 +74,7 @@
     <!-- /.content-header -->
 
     <!-- Modal -->
-{{-- <div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -83,7 +84,7 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <form action="{{ url('/admin/add_new_portal')}}" class="database_operation">  
+          <form action="{{ route('admin.student.store') }}" class="database_operation">  
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
@@ -114,7 +115,7 @@
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <button class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>
                 </div>
@@ -122,7 +123,7 @@
       </div>
       
     </div>
-    </div>	 --}}
+    </div>	
 
 
  

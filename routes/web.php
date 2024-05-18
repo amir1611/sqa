@@ -49,11 +49,14 @@ Route::prefix('admin')->middleware('theme:dashboard')->name('admin.')->group(fun
             Route::get('/question_status/{id}',[AdminController::class,'question_status']);
             Route::get('/delete_question/{id}',[AdminController::class,'delete_question']);
             Route::get('/update_question/{id}',[AdminController::class,'update_question']);
-            Route::get('/registered_students',[AdminController::class,'registered_students']);
+            Route::get('/registered_students',[AdminController::class,'registered_students'])->name('student.manage');
             Route::get('/delete_registered_students/{id}',[AdminController::class,'delete_registered_students']);
             Route::get('/apply_exam/{id}',[AdminController::class,'apply_exam']);
             Route::get('/admin_view_result/{id}',[AdminController::class,'admin_view_result']);
-    
+            Route::get('/view_students/{id}',[AdminController::class,'view_students'])->name('student.show');
+            Route::get('/edit_students/{id}',[AdminController::class,'edit_students'])->name('student.edit');
+            Route::get('/delete_students/{id}',[AdminController::class,'destroy_students'])->name('student.delete');
+
             Route::post('/edit_question_inner',[AdminController::class,'edit_question_inner']);
             Route::post('/add_new_question',[AdminController::class,'add_new_question']);
             Route::post('/edit_students_final',[AdminController::class,'edit_students_final']);
@@ -61,8 +64,8 @@ Route::prefix('admin')->middleware('theme:dashboard')->name('admin.')->group(fun
             Route::post('/add_new_category',[AdminController::class,'add_new_category']);
             Route::post('/edit_new_category',[AdminController::class,'edit_new_category']);
             Route::post('/edit_exam_sub',[AdminController::class,'edit_exam_sub']);
-            Route::post('/add_new_students',[AdminController::class,'add_new_students']);
-        
+            Route::post('/add_new_students',[AdminController::class,'add_new_students'])->name('student.store');
+            Route::post('/update_students/{id}',[AdminController::class,'update_students'])->name('student.update');
         });
         
 
@@ -85,7 +88,8 @@ Route::prefix('student')->middleware('theme:dashboard')->name('student.')->group
         Route::get('/apply_exam/{id}',[StudentOperation::class,'apply_exam']);
         Route::get('/view_result/{id}',[StudentOperation::class,'view_result']);
         Route::get('/view_answer/{id}',[StudentOperation::class,'view_answer']);
-
+        Route::get('/user_profile',[StudentOperation::class,'user_profile']);
+        Route::post('/update_profile',[StudentOperation::class,'update_profile'])->name('profile.update');
 
 
         Route::get('/logout',[AuthenticatedSessionController::class,'destroy']);

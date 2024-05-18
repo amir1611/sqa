@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Students</h1>
+            <h1 class="m-0">View Students</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Student</li>
+              <li class="breadcrumb-item active">View Student</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,34 +31,28 @@
                   <h3 class="card-title">Student Information</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('admin.student.update', $std->id) }}" method ="POST">  
-                      <div class="row">
+                    <form class="database_operation">  
+                        <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="">Name</label>
-                                    {{ csrf_field()}}
-                                    <input type="text" value="{{ $std->name }}" name="name" class="form-control">
+                                    <input type="text" value="{{ $std->name }}" name="name" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="">Email</label>
-                                    {{ csrf_field()}}
-                                    <input type="text" value="{{ $std->email }}" name="email" class="form-control">
+                                    <input type="text" value="{{ $std->email }}" name="email" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="">Contact</label>
-                                    {{ csrf_field()}}
-                                    <input type="text" value="{{ $std->mobile_no }}" name="mobile_no" class="form-control">
+                                    <input type="text" value="{{ $std->mobile_no }}" name="mobile_no" class="form-control" readonly>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
-                              <div class="form-group">
-                                  <button type="submit" class="btn btn-primary">Save</button>
-                                  <a href="{{ route('admin.student.manage') }}" class="btn btn-secondary btn mx-2">Back</a>
-                              </div>
+                            <div class="form-group">
+                              <a href="{{ route('admin.student.manage') }}" class="btn btn-secondary btn mx-2">Back</a>
                           </div>
                         </div>
                     </form>
@@ -73,4 +67,9 @@
     </div>
     <!-- /.content-header -->
 
+    <!-- Modal -->
+
+
+
+ 
 @endsection
