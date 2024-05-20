@@ -26,7 +26,7 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');
 
-
+Auth::routes(['verify' => true]);
 Route::prefix('admin')->middleware('theme:dashboard')->name('admin.')->group(function(){
    
         
@@ -75,10 +75,10 @@ Route::prefix('admin')->middleware('theme:dashboard')->name('admin.')->group(fun
 
 
 /* Student section routes */
-Route::prefix('student')->middleware('theme:dashboard')->name('student.')->group(function(){
+Route::prefix('student')->middleware(['theme:dashboard', 'verified'])->name('student.')->group(function(){
     
 
-    Route::middleware(['auth:web'])->group(function(){    
+    Route::middleware(['auth:web', 'verified'])->group(function(){    
         Route::get('/dashboard',[StudentOperation::class,'dashboard']);
    
         Route::get('/exam',[StudentOperation::class,'exam']);
