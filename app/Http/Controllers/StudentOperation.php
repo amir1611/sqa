@@ -10,9 +10,31 @@ use App\Models\Oex_question_master;
 use App\Models\Oex_result;
 use App\Models\User;
 use App\Models\user_exam;
+use Illuminate\Contracts\Validation\Rule;
 
 class StudentOperation extends Controller
 {
+    public function user_profile() {
+        return view('student.user_profile');
+    }
+
+    public function update_profile(Request $request) {
+        
+        $attributes = $request->validate([
+            'name' => ['required','max:255', 'min:2'],
+
+            'email' => ['required', 'email', 'max:255'],
+            'mobile_no' => ['required'],
+        ]);
+
+        auth()->user()->update([
+            'name' => $request->get('name'),
+            'email' => $request->get('email') ,
+            'mobile_no' => $request->get('mobile_no') ,
+        ]);
+        return view('student.user_profile');
+    }
+
     //student dashboard
     public function dashboard(){
         

@@ -132,6 +132,16 @@
                     </p>
                 </a>
             </li> 
+
+            <li class="nav-item">
+              <a href="{{ url('student/user_profile')}}" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    User Profile
+                  </p>
+              </a>
+          </li>
+
             <li class="nav-item">
                 <a href="{{ url('student/exam')}}" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>

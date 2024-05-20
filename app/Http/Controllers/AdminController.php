@@ -203,8 +203,6 @@ class AdminController extends Controller
         return view('admin.manage_students',$data);
     }
 
-
-
     //Add new students
     public function add_new_students(Request $request){
 
@@ -212,7 +210,6 @@ class AdminController extends Controller
             'name'=>'required',
             'email'=>'required',
             'mobile_no'=>'required',
-            'exam'=>'required',
             'password'=>'required'
 
         ]);
@@ -225,20 +222,47 @@ class AdminController extends Controller
             $std->name = $request->name;
             $std->email = $request->email;
             $std->mobile_no = $request->mobile_no;
-            $std->exam = $request->exam;
             $std->password = Hash::make($request->password);
 
             $std->status=1;
 
             $std->save();
 
-            $arr = array('status'=>'true','message'=>'student added successfully','reload'=>url('admin/manage_students'));
+            $arr = array('status'=>'true','message'=>'student added successfully','reload'=>url('admin/registered_students'));
         }
 
         echo json_encode($arr);
     }
 
+    //View Student
+    public function view_students($id) {
+        $std = User::find($id);
+        return view('admin.view_students', compact('std'));
+    }
 
+    //Edit Student
+    public function edit_students($id) {
+        $std = User::find($id);
+        return view('admin.edit_students', compact('std'));
+    }
+
+    //Update Student
+    public function update_students(Request $request, $id) {
+        $std = User::find($id);
+        
+        $std->update($request->all());
+        // dd($std);
+        return redirect('admin/registered_students');
+    }
+
+    //Delete Student
+    public function destroy_students($id) {
+        $std = User::find($id);
+        
+        $std->delete();
+
+        return redirect('admin/registered_students');
+    }
 
     //Editing student status
     public function student_status($id){
