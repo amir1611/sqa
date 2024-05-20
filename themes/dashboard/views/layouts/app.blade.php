@@ -209,14 +209,14 @@
             <li class="nav-item">
                 <a href="{{ url('admin/exam_category')}}" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Category</p>
+                    <p>Subject</p>
                 </a>
             </li>
 
             <li class="nav-item">
               <a href="{{ url('admin/manage_exam')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Manage Exam</p>
+                  <p>Manage Quiz</p>
               </a>
           </li>
 

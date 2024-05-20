@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Category</h1>
+            <h1 class="m-0">Edit Subject</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Edit Category</li>
+              <li class="breadcrumb-item active">Edit Subject</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -33,10 +33,10 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <label for="">Enter category name</label>
+                                    <label for="">Enter Subject name</label>
                                     {{ csrf_field()}}
                                     <input type="hidden" name="id" value="{{ $category->id}}">
-                                    <input type="text" required="required" value="{{ $category->name}}" name="name" placeholder="Enter category name" class="form-control">
+                                    <input type="text" required="required" value="{{ $category->name}}" name="name" placeholder="Enter subject name" class="form-control">
                                 </div>
                             </div>
                             <div class="col-sm-12">
